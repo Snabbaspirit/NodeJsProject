@@ -1,6 +1,6 @@
-<nav>
+<nav class="blue">
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo">My Apps</a>
+    <a href="#" class="brand-logo">My Vehicles</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
 
       {{#if isHome}}
@@ -9,16 +9,16 @@
         <li><a href="/">Main</a></li>
       {{/if}}
 
-      {{#if isCourses}}
-        <li class="active"><a href="/courses">Courses</a></li>
+      {{#if isCar}}
+        <li class="active"><a href="/cars">Cars</a></li>
       {{else}}
-        <li><a href="/courses">Courses</a></li>
+        <li><a href="/cars">Cars</a></li>
       {{/if}}
 
       {{#if isAdd}}
-        <li class="active"><a href="/add">Add new</a></li>
+        <li class="active"><a href="/add">Add mew ride</a></li>
       {{else}}
-        <li><a href="/add">Add new</a></li>
+        <li><a href="/add">Add new ride</a></li>
       {{/if}}
 
     </ul>
