@@ -2,10 +2,9 @@ const express = require('express');
 
 // Tool for dynamic create html (there are others like Pug, EJS etc..)
 const exphbs = require('express-handlebars');
-
-
-const path = require('path');
-
+const homeRoutes = require('./routes/home');
+const addCourseRoutes = require('./routes/add');
+const coursesRoutes = require('./routes/courses');
 
 const app = express();
 
@@ -25,29 +24,10 @@ app.set('views', 'views');
 // Define static folder
 app.use(express.static('public'));
 
-app.get('/', (req, res, next) => {
-    res.render('index', {
-        title: 'Main page',
-        isHome: true,
-    });
-    // res.sendFile(path.join(__dirname, 'views', 'index.html'))
-});
-
-app.get('/add', (req, res) => {
-    res.render('add', {
-        title: 'Add course page',
-        isAdd: true,
-    });
-    // res.sendFile(path.join(__dirname, 'views', 'about.html'))
-});
-
-app.get('/courses', (req, res) => {
-    res.render('courses', {
-        title: 'Courses page',
-        isCourses: true,
-    });
-})
-
+// Set preffix as a string path in the 1st param
+app.use('/', homeRoutes);
+app.use('/add', addCourseRoutes);
+app.use('/courses', coursesRoutes);
 
 const PORT = process.env.PORT || 3001;
 
