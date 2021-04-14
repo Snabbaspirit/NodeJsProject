@@ -1,10 +1,13 @@
 const {Router} = require('express');
+const Car = require('../models/car');
 const router = Router();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  const cars = await Car.getAll();
   res.render('cars', {
     title: 'Cars page',
     isCar: true,
+    cars,
   });
 });
 
