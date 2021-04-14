@@ -1,4 +1,5 @@
 const {Router} = require('express');
+const Car = require('../models/car');
 const router = Router();
 
 router.get('/', (req, res) => {
@@ -8,8 +9,9 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/', (req, res) => {
-  console.log('req body', req.body);
+router.post('/', async (req, res) => {
+  const car = new Car(req.body.model, req.body.price, req.body.img);
+  await car.save();
 
   res.redirect('/cars');
 })
