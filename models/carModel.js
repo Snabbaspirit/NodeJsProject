@@ -19,6 +19,25 @@ class Car {
     }
   }
 
+  static async update(data) {
+    const car = await Car.getAll();
+    const idx = car.findIndex(el => el.id === data.id);
+    car[idx] = data;
+    return new Promise((resolve, reject) => {
+      fs.writeFile(
+        path.join(__dirname, '..', 'data', 'cars.json'),
+        JSON.stringify(car),
+        (err) => {
+          if (err) {
+            reject(err)
+          } else {
+            resolve()
+          }
+        }
+      )
+    })
+  }
+
   async save() {
     const car = await Car.getAll();
     car.push(this.toJSON());

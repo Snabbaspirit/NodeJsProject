@@ -1,0 +1,23 @@
+<h1>Edit {{car.model}} card</h1>
+
+<form action="/cars/edit" method="POST">
+  <div class="input-field">
+    <input id="model" name="model" type="text" class="validate" required value="{{car.model}}">
+    <label for="model">Vehicle model</label>
+    <span class="helper-text" data-error="Enter vehicle model"/></span>
+  </div>
+  <div class="input-field">
+    <input id="price" name="price" type="text" class="validate" required value="{{car.price}}">
+    <label for="price">Price</label>
+    <span class="helper-text" data-error="Enter price"/></span>
+  </div>
+  <div class="input-field">
+    <input id="img" name="img" type="text" class="validate" required value="{{car.img}}">
+    <label for="img">URL Photo</label>
+    <span class="helper-text" data-error="Provide img url"></span>
+  </div>
+
+  <input type="hidden" name="id" value="{{car.id}}">
+
+  <button class="btn btn-primary">Edit</button>
+</form>
