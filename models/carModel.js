@@ -53,6 +53,11 @@ class Car {
       )
     })
   }
+
+  static async getSingle(id) {
+    const cars = await Car.getAll();
+    return cars.find(el => el.id === id)
+  }
 }
 
 module.exports = Car;

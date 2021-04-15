@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const Car = require('../models/car');
+const Car = require('../models/carModel');
 const router = Router();
 
 router.get('/', (req, res) => {

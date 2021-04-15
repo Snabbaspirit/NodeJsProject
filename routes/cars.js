@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const Car = require('../models/car');
+const Car = require('../models/carModel');
 const router = Router();
 
 router.get('/', async (req, res) => {
@@ -10,5 +10,14 @@ router.get('/', async (req, res) => {
     cars,
   });
 });
+
+router.get('/:id', async (req, res) => {
+  const car = await Car.getSingle(req.params.id)
+  res.render('car', {
+    layout: 'empty',
+    title: `Auto ${car.title}`,
+    car
+  });
+})
 
 module.exports = router;
