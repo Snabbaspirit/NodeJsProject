@@ -1,1 +1,30 @@
 <h1>Shop basket</h1>
+
+{{#if cars.length}}
+  <table>
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Count</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {{#each cars}}
+      <tr>
+        <td>{{model}}</td>
+        <td>{{count}}</td>
+        <td>
+          <button class="btn btn-small">Delete</button>
+        </td>
+      </tr>
+      {{/each}}
+
+    </tbody>
+  </table>
+
+  <p><strong>Price:</strong><span class="price">{{price}}</span></p>
+{{else}}
+  <p>Basket is empty</p>
+{{/if}}
