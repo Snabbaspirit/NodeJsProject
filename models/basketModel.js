@@ -26,7 +26,7 @@ class Basket {
     return new Promise((res, rej) => {
       fs.writeFile(p, JSON.stringify(basket), err => {
         if (err) rej();
-        res()
+        res(basket)
       })
     })
   }
@@ -45,13 +45,14 @@ class Basket {
 
     basket.price -= car.price
 
-
-    return new Promise((res, rej) => {
+    const removeOutput = new Promise((res, rej) => {
       fs.writeFile(p, JSON.stringify(basket), err => {
         if (err) rej();
         res(basket)
       })
     })
+    console.log('remove output', removeOutput);
+    return removeOutput
   }
 
   static async fetch() {
