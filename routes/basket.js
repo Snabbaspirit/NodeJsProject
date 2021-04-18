@@ -9,6 +9,12 @@ router.post('/add', async (req, res) => {
   res.redirect('/basket');
 });
 
+
+router.delete('/remove/:id', async (req, res) => {
+  const removeItem = await Basket.remove(req.params.id);
+  res.status(200).json(removeItem);
+})
+
 router.get('/', async (req, res) => {
 const basket = await Basket.fetch();
 res.render('basket', {

@@ -1,5 +1,5 @@
 const express = require('express');
-
+const path = require("path");
 // Tool for dynamic create html (there are others like Pug, EJS etc..)
 const exphbs = require('express-handlebars');
 const homeRoutes = require('./routes/home');
@@ -25,7 +25,7 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 
 // Define static folder
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Raw request body
 app.use(express.urlencoded({extended: true}))
