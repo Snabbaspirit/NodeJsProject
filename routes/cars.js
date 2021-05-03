@@ -28,13 +28,23 @@ router.post('/edit', async (req, res) => {
   try {
     const {id} = req.body;
     delete req.body.id;
-    await Car.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
+    await Car.findByIdAndUpdate(id, req.body)
     res.redirect('/cars')
   } catch (e) {
     console.log(e)
   }
 })
 
+router.post('/remove', async (req, res) => {
+  try {
+    await Car.deleteOne({
+      _id: req.body.id
+    })
+    res.redirect('/cars')
+  } catch(e) {
+    console.log(e)
+  }
+})
 
 router.get('/:id', async (req, res) => {
   try {

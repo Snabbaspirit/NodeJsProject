@@ -19,5 +19,10 @@
 
   <input type="hidden" name="id" value="{{car.id}}">
 
-  <button class="btn btn-primary">Edit</button>
+  <button type="submit" class="btn btn-primary">Edit</button>
+</form>
+
+<form action="/cars/remove" method="POST" style="float: right; margin-top: -38px">
+  <input type="hidden" name="id" value="{{car.id}}">
+  <button class="btn red">Delete vehicle</button>
 </form>
