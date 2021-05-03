@@ -2,7 +2,9 @@ const express = require('express');
 const path = require("path");
 // Tool for dynamic create html (there are others like Pug, EJS etc..)
 const mongoose = require('mongoose');
+const Handlebars = require('handlebars');
 const exphbs = require('express-handlebars');
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
 const homeRoutes = require('./routes/home');
 const addCarRoutes = require('./routes/add');
 const carRoutes = require('./routes/cars');
@@ -14,6 +16,7 @@ const app = express();
 const hbs = exphbs.create({
     defaultLayout: 'main',
     extname: 'hbs',
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
 });
 
 // const dbPass = 'zbWCBDuRAMzC9b2';
@@ -44,7 +47,10 @@ const PORT = process.env.PORT || 3001;
 async function start() {
     try {
         const dbUrl = 'mongodb+srv://Ivan:zbWCBDuRAMzC9b2@cluster0.j1cd9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-        await mongoose.connect(dbUrl, {useNewUrlParser: true})
+        await mongoose.connect(dbUrl, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        })
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}...`);
         });

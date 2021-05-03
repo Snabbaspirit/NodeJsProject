@@ -10,10 +10,16 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const car = new Car(req.body.model, req.body.price, req.body.img);
-  await car.save();
+  const car = new Car({
+    model: req.body.model,
+    price: req.body.price,
+    img: req.body.img
+  })
 
-  res.redirect('/cars');
+  try {
+    await car.save();
+    res.redirect('/cars');
+  } catch(e) {console.log('e', e)}
 })
 
 module.exports = router;
